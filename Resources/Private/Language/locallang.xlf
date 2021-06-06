@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:xeniathiem_ranking/Resources/Private/Language/locallang" date="2021-06-04T07:33:48Z" product-name="xeniathiem_ranking">
+		<header/>
+		<body>
+			<trans-unit id="tx_xeniathiemranking_domain_model_rankingoption" resname="tx_xeniathiemranking_domain_model_rankingoption">
+				<source>Rankingoption</source>
+			</trans-unit>
+			<trans-unit id="tx_xeniathiemranking_domain_model_rankingoption.title" resname="tx_xeniathiemranking_domain_model_rankingoption.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_xeniathiemranking_domain_model_rankingoption.image" resname="tx_xeniathiemranking_domain_model_rankingoption.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_xeniathiemranking_domain_model_rankingoption.link" resname="tx_xeniathiemranking_domain_model_rankingoption.link">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="ranking.rankingtool.title" resname="ranking.rankingtool.title">
+				<source>Überschrift</source>
+			</trans-unit>
+			<trans-unit id="ranking.rankingtool.subtitle" resname="ranking.rankingtool.subtitle">
+				<source>Untertitel</source>
+			</trans-unit>
+			<trans-unit id="ranking.rankingtool.description.1" resname="ranking.rankingtool.description.1">
+				<source>Einleitungstext für die Phase Grundauswahl</source>
+			</trans-unit>
+			<trans-unit id="ranking.rankingtool.description.2" resname="ranking.rankingtool.description.2">
+				<source>Einleitungstext für die Phase Direkte Gegenüberstellung</source>
+			</trans-unit>
+			<trans-unit id="ranking.rankingtool.description.3" resname="ranking.rankingtool.description.3">
+				<source>Einleitungstext für die Präsentation des Ergebnisses</source>
+			</trans-unit>
+			<trans-unit id="" resname="">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="" resname="">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="" resname="">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="" resname="">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

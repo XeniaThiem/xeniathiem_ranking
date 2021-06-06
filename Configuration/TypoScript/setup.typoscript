@@ -1,0 +1,79 @@
+plugin.tx_xeniathiemranking_rankingtool {
+    view {
+        templateRootPaths.0 = EXT:xeniathiem_ranking/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_xeniathiemranking_rankingtool.view.templateRootPath}
+        partialRootPaths.0 = EXT:xeniathiem_ranking/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_xeniathiemranking_rankingtool.view.partialRootPath}
+        layoutRootPaths.0 = EXT:xeniathiem_ranking/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_xeniathiemranking_rankingtool.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_xeniathiemranking_rankingtool.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+        # Should be on by default, but can be disabled if all action in the plugin are uncached
+        requireCHashArgumentForActionArguments = 1
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
+page = PAGE
+page {
+   typeNum = 0
+
+   // Part 1: Fluid template section
+   10 = FLUIDTEMPLATE
+   10 {
+
+			templateRootPaths {
+			  0 = EXT:site_package/Resources/Private/Templates/Page/
+			  1 = {$page.fluidtemplate.templateRootPath}
+			}
+			partialRootPaths {
+			  0 = EXT:site_package/Resources/Private/Partials/Page/
+			  1 = {$page.fluidtemplate.partialRootPath}
+			}
+			layoutRootPaths {
+			  0 = EXT:site_package/Resources/Private/Layouts/Page/
+			  1 = {$page.fluidtemplate.layoutRootPath}
+			}
+
+		}
+
+    includeCSS {
+      file1 = EXT:xeniathiem_ranking/Resources/Public/CSS/xeniathiem_ranking.css
+    }
+    includeJSFooter {
+      file2 = EXT:xeniathiem_ranking/Resources/Public/JavaScript/xeniathiem_ranking.js
+    }
+
+}
+
+rankingBaseAjax = PAGE
+rankingBaseAjax {
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-Type:application/json;charset=utf8
+    xhtml_cleaning = 0
+    admPanel = 0
+    no_cache = 1
+    debug = 0
+  }
+
+  typeNum = 1622806996
+
+  10 = USER
+  10 {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    vendorName = Xeniathiem
+    extensionName = XeniathiemRanking
+    pluginName = Ajax
+    controller = Ajax
+  }
+}

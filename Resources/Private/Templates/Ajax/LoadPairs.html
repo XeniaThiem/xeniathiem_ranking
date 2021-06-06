@@ -1,0 +1,37 @@
+
+
+  <f:form id="form-rankingtool-pairs"
+          extensionName="XeniathiemRanking"
+          pageUid="4"
+          pageType="1622806996"
+          action="showWinner"
+          controller="Ajax"
+          pluginName="Ajax"
+          name="ranking"
+          object="{ranking}">
+
+          <div class="container">
+
+          <f:for each="{rankingPairs}" as="rankingOption" iteration="i">
+
+            <div class="row rankingpair-row">
+
+            <f:for each="{rankingOption}" as="name" key="uid">
+
+              <div class="col-md-4 rankingpair-single-value-area" data-rankingpair="{i.cycle}">
+
+              <f:form.checkbox multiple="true" class="rankingpair-radio" property="rankingpairs" id="radio-{uid}" value="{uid}" /> {name}
+
+              </div>
+
+            </f:for>
+
+            </div>
+
+          </f:for>
+
+          </div>
+
+          <button type="submit" class="btn btn-info" id="rankingwinner-submit">Auswahl übernehmen und weiter</button>
+
+  </f:form>

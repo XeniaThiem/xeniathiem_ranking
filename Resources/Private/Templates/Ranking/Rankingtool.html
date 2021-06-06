@@ -1,0 +1,72 @@
+<html
+xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+
+  <div class="rankingtool-section">
+
+  <div class="rankingtool-title">
+    <h1>{title}</h1>
+  </div>
+
+  <div class="rankingtool-subtitle">
+    <div class="h4">{subtitle}</div>
+  </div>
+
+  <div class="rankingtool-description-phase-one">
+    <f:format.html>{descriptionone}</f:format.html>
+  </div>
+
+  <div class="rankingtool-description-phase-two">
+    <f:format.html>{descriptiontwo}</f:format.html>
+  </div>
+
+  <div class="rankingtool-description-phase-three">
+    <f:format.html>{descriptionthree}</f:format.html>
+  </div>
+
+  <div class="rankingtool-counter-phase-one sticky-top">Aktuell für nächste Phase ausgewählt: <span class="counter-phase-one">0</span></div>
+  <div class="rankingtool-counter-phase-two sticky-top"><span class="counter-phase-two">0</span> / <span class="totalcount"></span></div>
+
+
+  <f:if condition="{rankingOptions}">
+
+    <div class="all-rankingoptions-form">
+
+      <f:form id="form-rankingtool-basic-selection"
+              extensionName="XeniathiemRanking"
+              pageUid="4"
+              pageType="1622806996"
+              action="loadPairs"
+              controller="Ajax"
+              pluginName="Ajax"
+              name="ranking"
+              object="{ranking}">
+
+              <table class="rankingoptions-table">
+              <f:for each="{rankingOptions -> v:iterator.chunk(count:3)}" as="rankingOptionChunk">
+                <tr>
+                <f:for each="{rankingOptionChunk}" as="rankingOption">
+                  <td class="rankingoptions-table-singlevalue">
+                     <f:form.checkbox id="checkbox-ranking-single-option-{rankingOption.uid}" multiple="true" class="rankingoptions-checkbox" property="rankingoptions" value="{rankingOption.uid}" />  {rankingOption.title}
+                  </td>
+                </f:for>
+              </tr>
+              </f:for>
+              </table>
+
+              <button type="submit" class="btn btn-info" id="rankingoptions-submit">Auswahl übernehmen und weiter</button>
+
+      </f:form>
+
+    </div>
+
+  </f:if>
+
+</div>
+
+</f:section>
+</html>

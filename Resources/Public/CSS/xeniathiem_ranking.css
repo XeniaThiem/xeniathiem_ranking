@@ -1,0 +1,83 @@
+.rankingtool-section {
+  margin-top: 30px;
+}
+
+.rankingoptions-table {
+  border: 1px solid black;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.rankingoptions-table-singlevalue {
+  border: 1px solid black;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.rankingpair-single-value-area {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.rankingoptions-checkbox, .rankingpair-radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.rankingtool-description-phase-two, .rankingtool-description-phase-three {
+  display: none;
+}
+
+.rankingtool-winner-table-row {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.first-place {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #836FFF;
+}
+
+.first-place-content {
+  font-weight: bold;
+}
+
+.rankingtool-counter-phase-one {
+  font-weight: bold;
+  background-color: white;
+  z-index: 99;
+  padding: 10px;
+  box-shadow: 2px 2px 1px #aaaaaa;
+  width: 25%;
+}
+
+.rankingtool-counter-phase-two {
+  display: none;
+  font-weight: bold;
+  background-color: white;
+  z-index: 99;
+  padding: 10px;
+  box-shadow: 2px 2px 1px #aaaaaa;
+  width: 7%;
+  margin-bottom: 10px;
+}
+
+.counter-phase-one, .counter-phase-two {
+  color: #CD2990;
+}
