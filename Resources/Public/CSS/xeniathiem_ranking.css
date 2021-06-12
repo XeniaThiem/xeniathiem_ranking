@@ -81,3 +81,26 @@
 .counter-phase-one, .counter-phase-two {
   color: #CD2990;
 }
+
+.rankingoption-section-divider {
+  display: none;
+}
+
+.sectiontab-buttons {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.rankingpair-row {
+  display: none;
+}
+
+.control-buttons {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.rankingtool-collection-table {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

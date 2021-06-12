@@ -30,6 +30,18 @@ class Rankingoption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $title = '';
 
     /**
+     * collection
+     *
+     * @var string
+     */
+    protected $collection = '';
+
+    /**
+    * @var int
+    */
+    protected $collectiondisplay;
+
+    /**
      * image
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
@@ -63,6 +75,48 @@ class Rankingoption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * Returns the collection
+     *
+     * @return string $collection
+     */
+    public function getCollection()
+    {
+        return $this->collection;
+    }
+
+    /**
+     * Sets the collection
+     *
+     * @param string $collection
+     * @return void
+     */
+    public function setCollection($collection)
+    {
+        $this->collection = $collection;
+    }
+
+    /**
+     * Returns the collectiondisplay
+     *
+     * @return int $collectiondisplay
+     */
+    public function getCollectiondisplay()
+    {
+        return $this->collectiondisplay;
+    }
+
+    /**
+     * Sets the collectiondisplay
+     *
+     * @param int $collectiondisplay
+     * @return void
+     */
+    public function setCollectiondisplay($collectiondisplay)
+    {
+        $this->collectiondisplay = $collectiondisplay;
     }
 
     /**

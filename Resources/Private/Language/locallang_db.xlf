@@ -21,6 +21,9 @@
 			<trans-unit id="tx_xeniathiem_ranking_rankingtool.description" resname="tx_xeniathiem_ranking_rankingtool.description">
 				<source></source>
 			</trans-unit>
+			<trans-unit id="tx_xeniathiemranking_domain_model_section" resname="tx_xeniathiemranking_domain_model_section">
+				<source>Section</source>
+			</trans-unit>			
 		</body>
 	</file>
 </xliff>

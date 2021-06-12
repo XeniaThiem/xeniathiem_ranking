@@ -16,31 +16,40 @@
 				<source>Link</source>
 			</trans-unit>
 			<trans-unit id="ranking.rankingtool.title" resname="ranking.rankingtool.title">
-				<source>Überschrift</source>
+				<source>Title</source>
 			</trans-unit>
 			<trans-unit id="ranking.rankingtool.subtitle" resname="ranking.rankingtool.subtitle">
-				<source>Untertitel</source>
+				<source>Subtitle</source>
 			</trans-unit>
 			<trans-unit id="ranking.rankingtool.description.1" resname="ranking.rankingtool.description.1">
-				<source>Einleitungstext für die Phase Grundauswahl</source>
+				<source>Introtext for phase "Basic Selection"</source>
 			</trans-unit>
 			<trans-unit id="ranking.rankingtool.description.2" resname="ranking.rankingtool.description.2">
-				<source>Einleitungstext für die Phase Direkte Gegenüberstellung</source>
+				<source>Introtext for phase "Duel"</source>
 			</trans-unit>
 			<trans-unit id="ranking.rankingtool.description.3" resname="ranking.rankingtool.description.3">
-				<source>Einleitungstext für die Präsentation des Ergebnisses</source>
+				<source>Introtext for presentation of results</source>
 			</trans-unit>
-			<trans-unit id="" resname="">
-				<source></source>
+			<trans-unit id="tx_xeniathiemranking_domain_model_rankingoption.collection" resname="tx_xeniathiemranking_domain_model_rankingoption.collection">
+				<source>Collection (author, artist, album, ...) (optional)</source>
 			</trans-unit>
-			<trans-unit id="" resname="">
-				<source></source>
+			<trans-unit id="tx_xeniathiemranking_domain_model_section.title" resname="tx_xeniathiemranking_domain_model_section.title">
+				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="" resname="">
-				<source></source>
+			<trans-unit id="tx_xeniathiemranking_domain_model_section.rankingoptions" resname="tx_xeniathiemranking_domain_model_section.rankingoptions">
+				<source>Create new option to be selected in this section</source>
 			</trans-unit>
-			<trans-unit id="" resname="">
-				<source></source>
+			<trans-unit id="tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay" resname="tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay">
+				<source>How do you want to display the name of the collection?</source>
+			</trans-unit>
+			<trans-unit id="tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay.1" resname="tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay.1">
+				<source>Do not display</source>
+			</trans-unit>
+			<trans-unit id="tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay.2" resname="tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay.2">
+				<source>Put collection in front of title as "collection - title"</source>
+			</trans-unit>
+			<trans-unit id="tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay.3" resname="tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay.3">
+				<source>Put collection after title as "title (collection)"</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -1,5 +1,3 @@
-
-
   <f:form id="form-rankingtool-pairs"
           extensionName="XeniathiemRanking"
           pageUid="4"
@@ -14,7 +12,7 @@
 
           <f:for each="{rankingPairs}" as="rankingOption" iteration="i">
 
-            <div class="row rankingpair-row">
+            <div class="row rankingpair-row" id="{i.cycle}pair">
 
             <f:for each="{rankingOption}" as="name" key="uid">
 
@@ -28,6 +26,10 @@
 
             </div>
 
+          </f:for>
+
+          <f:for each="{allOptions}" as="singleOption">
+            <f:form.hidden name="ranking[rankingoptions][]" value="{singleOption}" />
           </f:for>
 
           </div>

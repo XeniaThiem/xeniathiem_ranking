@@ -18,4 +18,24 @@
   </tr>
   </f:for>
 </table>
+
+<table class="rankingtool-collection-table">
+  <f:for each="{collections}" as="score" key="winner" iteration="j">
+  <tr>
+  <f:if condition="{j.cycle} === 1">
+    <f:then>
+      <td class="first-place">
+        <span class="first-place-content">{winner}: {score}</span>
+      </td>
+    </f:then>
+    <f:else>
+      <td class="rankingtool-winner-table-row">
+        {winner}: {score}
+      </td>
+    </f:else>
+  </f:if>
+  </tr>
+  </f:for>
+</table>
+
 </div>

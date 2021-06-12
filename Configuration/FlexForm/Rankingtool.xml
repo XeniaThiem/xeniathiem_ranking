@@ -64,12 +64,12 @@
                           </config>
                       </TCEforms>
                     </settings.descriptionthree>
-                    <settings.rankingoptions>
+                    <settings.sections>
                       <TCEforms>
-                          <label>LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang.xlf:ranking.rankingtool.rankingoptions</label>
+                          <label>LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang.xlf:ranking.rankingtool.sections</label>
                           <config>
                               <type>inline</type>
-                              <foreign_table>tx_xeniathiemranking_domain_model_rankingoption</foreign_table>
+                              <foreign_table>tx_xeniathiemranking_domain_model_section</foreign_table>
                               <foreign_field>parentid</foreign_field>
                               <foreign_table_field>parenttable</foreign_table_field>
                               <appearance>
@@ -77,7 +77,7 @@
                               </appearance>
                           </config>
                       </TCEforms>
-                    </settings.rankingoptions>
+                    </settings.sections>
                 </el>
             </ROOT>
         </sDEF>

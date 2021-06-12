@@ -36,6 +36,11 @@ class Ranking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   protected $winner;
 
   /**
+  * @var int
+  */
+  protected $step = 0;
+
+  /**
    * @return array
    */
   public function getRankingoptions()
@@ -84,6 +89,23 @@ class Ranking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   public function setWinner(\Xeniathiem\XeniathiemRanking\Domain\Model\Rankingoption $winner)
   {
     $this->winner = $winner;
+  }
+
+  /**
+   * @return int
+   */
+  public function getStep()
+  {
+    return $this->step;
+  }
+
+  /**
+   * @param int
+   * @return void
+   */
+  public function setStep(int $step)
+  {
+    $this->step = $step;
   }
 
 }

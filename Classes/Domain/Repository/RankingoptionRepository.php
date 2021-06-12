@@ -39,10 +39,13 @@ class RankingoptionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     $this->setDefaultQuerySettings($this->querySettings);
   }
 
-  public function findRankingOptionsForUid($pid)
+  public function findRankingOptionsBySection($sectionUid, $pid)
   {
     $query = $this->createQuery();
-    $query->matching($query->equals('pid', $pid));
+    $constraints = [];
+    $constraints[] = $query->equals('pid', $pid);
+    $constraints[] = $query->equals('parentid', $sectionUid);
+    $query->matching($query->logicalAnd($constraints));
 
     return $query->execute();
   }
@@ -53,7 +56,8 @@ class RankingoptionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     $allOptions = [];
     foreach ($rankingOptionsSelect as $rankingOptionUid) {
       $rankingOption = $this->findByUid((int) $rankingOptionUid);
-      $allOptions[] = [$rankingOption->getUid(), $rankingOption->getTitle()];
+      $name = $this->getTitleInclCollection($rankingOption);
+      $allOptions[] = [$rankingOption->getUid(), $name];
     }
 
     $countAllOptions = count($allOptions);
@@ -68,13 +72,26 @@ class RankingoptionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     return $rankingPairs;
   }
 
-  public function getWinnerRanking($winnerArray)
+  public function getTitleInclCollection($object)
+  {
+    $name = $object->getTitle();
+    $collectiondisplay = $object->getCollectiondisplay();
+    $collection = $object->getCollection();
+    if ($collectiondisplay === 2 && $collection !== '') {
+      $name = $collection . ' - ' . $name;
+    } else if ($collectiondisplay === 3 && $collection !== '') {
+      $name = $name . ' (' . $collection . ')';
+    }
+    return $name;
+  }
+
+  public function getWinnerRanking($winnerArray, $allUids)
   {
     $winnerRanking = [];
 
     foreach ($winnerArray as $winner) {
       $winnerObject = $this->findByUid($winner);
-      $name = $winnerObject->getTitle();
+      $name = $this->getTitleInclCollection($winnerObject);
       if ($winnerRanking[$name]) {
         $winnerRanking[$name]++;
       } else {
@@ -82,9 +99,47 @@ class RankingoptionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
       }
     }
 
+    foreach ($allUids as $uid) {
+      if (!in_array($uid, $winnerArray)) {
+        $zeroPointObject = $this->findByUid($uid);
+        $name = $this->getTitleInclCollection($zeroPointObject);
+        $winnerRanking[$name] = 0;
+      }
+    }
+
     arsort($winnerRanking, SORT_NUMERIC);
 
     return $winnerRanking;
   }
+
+  public function getCollectionRanking($winnerArray, $allUids)
+  {
+    $collectionRanking = [];
+
+    foreach ($winnerArray as $winner) {
+      $winnerObject = $this->findByUid($winner);
+      $collection = $winnerObject->getCollection();
+      if ($collection !== '') {
+        if ($collectionRanking[$collection]) {
+          $collectionRanking[$collection]++;
+        } else {
+          $collectionRanking[$collection] = 1;
+        }
+      }
+    }
+
+    foreach ($allUids as $uid) {
+      $zeroPointObject = $this->findByUid($uid);
+      $collectionName = $zeroPointObject->getCollection();
+      if (!array_key_exists($collectionName, $collectionRanking) && $collectionName !== '') {
+        $collectionRanking[$collectionName] = 0;
+      }
+    }
+
+    arsort($collectionRanking, SORT_NUMERIC);
+
+    return $collectionRanking;
+  }
+
 
 }

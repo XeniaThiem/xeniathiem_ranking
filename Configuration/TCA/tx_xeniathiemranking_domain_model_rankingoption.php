@@ -17,10 +17,10 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'title,link',
-        'iconfile' => 'EXT:xeniathiem_ranking/Resources/Public/Icons/tx_xeniathiemranking_domain_model_rankingoption.gif'
+        'iconfile' => 'EXT:xeniathiem_ranking/Resources/Public/Icons/actions-star.svg'
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, image, link, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, collection, collectiondisplay, title, image, link, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -104,9 +104,30 @@ return [
             ],
         ],
 
+        'collection' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang.xlf:tx_xeniathiemranking_domain_model_rankingoption.collection',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'collectiondisplay' => [
+          'exclude' => true,
+          'label' => 'LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang.xlf:tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay',
+          'config' => [
+                'type' => 'radio',
+                'items' => [
+                    ['LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang.xlf:tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay.1', 1],
+                    ['LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang.xlf:tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay.2', 2],
+                    ['LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang.xlf:tx_xeniathiemranking_domain_model_rankingoption.collectiondisplay.3', 3],
+                ],
+            ],
+        ],
         'title' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang_db.xlf:tx_xeniathiemranking_domain_model_rankingoption.title',
+            'label' => 'LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang.xlf:tx_xeniathiemranking_domain_model_rankingoption.title',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -115,7 +136,7 @@ return [
         ],
         'image' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang_db.xlf:tx_xeniathiemranking_domain_model_rankingoption.image',
+            'label' => 'LLL:EXT:xeniathiem_ranking/Resources/Private/Language/locallang.xlf:tx_xeniathiemranking_domain_model_rankingoption.image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'image',
                 [

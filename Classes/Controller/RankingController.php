@@ -15,6 +15,7 @@ namespace Xeniathiem\XeniathiemRanking\Controller;
  */
 
 use Xeniathiem\XeniathiemRanking\Domain\Repository\RankingoptionRepository;
+use Xeniathiem\XeniathiemRanking\Domain\Repository\SectionRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 
 /**
@@ -31,13 +32,21 @@ class RankingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     protected $rankingoptionRepository;
 
     /**
+     * sectionRepository
+     *
+     * @var SectionRepository
+     */
+    protected $sectionRepository;
+
+    /**
     * @var ConfigurationManager
     */
     protected $configurationManager;
 
-    public function __construct(RankingoptionRepository $rankingoptionRepository, ConfigurationManager $configurationManager)
+    public function __construct(RankingoptionRepository $rankingoptionRepository, SectionRepository $sectionRepository, ConfigurationManager $configurationManager)
     {
       $this->rankingoptionRepository = $rankingoptionRepository;
+      $this->sectionRepository = $sectionRepository;
       $this->ConfigurationManager = $configurationManager;
     }
 
@@ -55,7 +64,16 @@ class RankingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
       $pid = $this->ConfigurationManager->getContentObject()->data['pid'];
 
-      $rankingOptions = $this->rankingoptionRepository->findRankingOptionsForUid($pid);
+      $rankingOptions = [];
+      $sections = $this->sectionRepository->findSectionsByPid($pid);
+
+      if (count($sections) > 0) {
+        foreach ($sections as $section) {
+          $rankingOptions[] = $this->rankingoptionRepository->findRankingOptionsBySection($section->getUid(), $pid);
+        }
+      }
+
+      $sectionCount = count($sections);
 
       $this->view->assignMultiple([
         'title' => $title,
@@ -63,7 +81,9 @@ class RankingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         'descriptionone' => $descriptionOne,
         'descriptiontwo' => $descriptionTwo,
         'descriptionthree' => $descriptionThree,
-        'rankingOptions' => $rankingOptions
+        'rankingOptions' => $rankingOptions,
+        'sections' => $sections,
+        'sectionCount' => $sectionCount
       ]);
     }
 

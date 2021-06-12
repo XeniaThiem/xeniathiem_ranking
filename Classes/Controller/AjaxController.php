@@ -51,7 +51,10 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
       $rankingPairs = $this->rankingoptionRepository->generateOptionPairs($rankingOptionsSelect);
 
-      $this->view->assign('rankingPairs', $rankingPairs);
+      $this->view->assignMultiple([
+        'rankingPairs'=> $rankingPairs,
+        'allOptions' => $rankingOptionsSelect
+      ]);
 
       $response['html'] = $this->view->render();
 
@@ -62,10 +65,15 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function showWinnerAction(Ranking $ranking)
     {
       $winnerArray = $ranking->getRankingpairs();
+      $allUids = $ranking->getRankingoptions();
 
-      $winnerRanking = $this->rankingoptionRepository->getWinnerRanking($winnerArray);
+      $winnerRanking = $this->rankingoptionRepository->getWinnerRanking($winnerArray, $allUids);
+      $collectionRanking = $this->rankingoptionRepository->getCollectionRanking($winnerArray, $allUids);
 
-      $this->view->assign('winners', $winnerRanking);
+      $this->view->assignMultiple([
+        'winners' => $winnerRanking,
+        'collections' => $collectionRanking
+      ]);
 
       $response['html'] = $this->view->render();
 

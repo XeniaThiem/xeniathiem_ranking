@@ -31,36 +31,73 @@ data-namespace-typo3-fluid="true">
   <div class="rankingtool-counter-phase-one sticky-top">Aktuell für nächste Phase ausgewählt: <span class="counter-phase-one">0</span></div>
   <div class="rankingtool-counter-phase-two sticky-top"><span class="counter-phase-two">0</span> / <span class="totalcount"></span></div>
 
+  <div class="container">
+    <button class="btn btn-secondary control-buttons prev-button">zurück</button>
+    <button class="btn btn-secondary control-buttons next-button">weiter</button>
+    <button class="btn btn-secondary control-buttons all-button" id="show-all">alle anzeigen</button>
+    <button class="btn btn-secondary control-buttons all-button" id="back-to-single">zurück zur Einzelansicht</button>
+  </div>
 
   <f:if condition="{rankingOptions}">
 
     <div class="all-rankingoptions-form">
 
-      <f:form id="form-rankingtool-basic-selection"
-              extensionName="XeniathiemRanking"
-              pageUid="4"
-              pageType="1622806996"
-              action="loadPairs"
-              controller="Ajax"
-              pluginName="Ajax"
-              name="ranking"
-              object="{ranking}">
+      <f:if condition="{sectionCount} > 1">
 
-              <table class="rankingoptions-table">
-              <f:for each="{rankingOptions -> v:iterator.chunk(count:3)}" as="rankingOptionChunk">
-                <tr>
-                <f:for each="{rankingOptionChunk}" as="rankingOption">
-                  <td class="rankingoptions-table-singlevalue">
-                     <f:form.checkbox id="checkbox-ranking-single-option-{rankingOption.uid}" multiple="true" class="rankingoptions-checkbox" property="rankingoptions" value="{rankingOption.uid}" />  {rankingOption.title}
-                  </td>
-                </f:for>
-              </tr>
-              </f:for>
-              </table>
+        <f:for each="{sections}" as="sectiontab" iteration="j">
+          <button class="btn btn-info sectiontab-buttons" id="{j.cycle}sectiontab"> {sectiontab.title} </button>
+        </f:for>
 
-              <button type="submit" class="btn btn-info" id="rankingoptions-submit">Auswahl übernehmen und weiter</button>
+      </f:if>
 
-      </f:form>
+        <f:form id="form-rankingtool-basic-selection"
+                extensionName="XeniathiemRanking"
+                pageUid="4"
+                pageType="1622806996"
+                action="loadPairs"
+                controller="Ajax"
+                pluginName="Ajax"
+                name="ranking"
+                object="{ranking}">
+
+                <table class="rankingoptions-table">
+
+                  <f:for each="{rankingOptions}" as="section" iteration="i">
+
+                  <tbody class="rankingoption-section-divider" id="{i.cycle}section-divider">
+
+                    <f:for each="{section -> v:iterator.chunk(count:3)}" as="rankingOptionChunk">
+
+                      <tr>
+                        <f:for each="{rankingOptionChunk}" as="rankingOption">
+                          <td class="rankingoptions-table-singlevalue">
+                             <f:form.checkbox id="checkbox-ranking-single-option-{rankingOption.uid}" multiple="true" class="rankingoptions-checkbox" property="rankingoptions" value="{rankingOption.uid}" />
+                              <f:if condition="{rankingOption.collection}">
+                                <f:if condition="{rankingOption.collectiondisplay} === 2">
+                                  {rankingOption.collection} -
+                                </f:if>
+                              </f:if>
+                             {rankingOption.title}
+                             <f:if condition="{rankingOption.collection}">
+                               <f:if condition="{rankingOption.collectiondisplay} === 3">
+                                 ({rankingOption.collection})
+                               </f:if>
+                             </f:if>
+                          </td>
+                        </f:for>
+                      </tr>
+
+                  </f:for>
+                </tbody>
+                  </f:for>
+
+                </table>
+
+                <button class="btn btn-secondary select-all-rankingoptions">Alle auswählen</button>
+
+                <button type="submit" class="btn btn-info" id="rankingoptions-submit">Auswahl übernehmen und weiter</button>
+
+        </f:form>
 
     </div>
 
