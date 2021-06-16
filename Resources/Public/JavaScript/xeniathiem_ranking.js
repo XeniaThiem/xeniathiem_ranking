@@ -1,11 +1,17 @@
 $(document).ready(function() {
 
   $('#1section-divider').show();
+  $('#1sectiontab').attr('style', 'background-color: #836FFF !important');
   $('.rankingtool-section').find('.control-buttons').hide();
 
-  $('.all-rankingoptions-form').on('click', '.sectiontab-buttons', function(e) {
+  $('.all-rankingoptions-form').on('click', '.sectiontab-buttons', function() {
     let sectionuid = parseInt($(this).attr('id'));
     let sectiondividers = $('#form-rankingtool-basic-selection').find('.rankingoption-section-divider');
+    let sectionbuttons = $('.all-rankingoptions-form').find('.sectiontab-buttons');
+    sectionbuttons.each(function() {
+      $(this).attr('style', '');
+    });
+    $(this).attr('style', 'background-color: #836FFF !important');
     sectiondividers.each(function() {
       $(this).hide();
       if (parseInt($(this).attr('id')) === sectionuid) {
